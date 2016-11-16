@@ -1,0 +1,75 @@
+<h1>Company Edit</h1>
+
+<div class="col-md-8">
+    <form class="form-horizontal" name="companyEditForm" role="form" ng-submit="save()" novalidate >
+        <div class="form-group">
+            <label class="col-md-4 control-label">Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="name" ng-model="name"
+                       ng-minlength = "1" ng-maxlength = "50" required />
+            </div>
+            <div class="error" ng-messages="companyEditForm.name.$error" ng-if="companyEditForm.name.$touched">
+                <p ng-message="required">Company name is required.</p>
+                <p ng-message="minlength">Company name should have minimum 1 character.</p>
+                <p ng-message="maxlength">Company name is longer than 50 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address city</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="city" ng-model="address.city"
+                       ng-minlength = "1" ng-maxlength = "40" required />
+            </div>
+            <div class="error" ng-messages="companyEditForm.city.$error" ng-if="companyEditForm.city.$touched">
+                <p ng-message="required">Address: city is required.</p>
+                <p ng-message="minlength">City name should have minimum 1 character.</p>
+                <p ng-message="maxlength">City name is longer than 40 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address postcode</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="postcode" ng-model="address.postcode"
+                       ng-minlength = "1" ng-maxlength = "10" required />
+            </div>
+            <div class="error" ng-messages="companyEditForm.postcode.$error" ng-if="companyEditForm.postcode.$touched">
+                <p ng-message="required">Address: postcode is required.</p>
+                <p ng-message="minlength">Postcode should have minimum 1 character.</p>
+                <p ng-message="maxlength">Postcode is longer than 10 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address street</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="street" ng-model="address.street"
+                       ng-minlength = "1" ng-maxlength = "50" required />
+            </div>
+            <div class="error" ng-messages="companyEditForm.street.$error" ng-if="companyEditForm.street.$touched">
+                <p ng-message="required">Address: street is required.</p>
+                <p ng-message="minlength">Street name should have minimum 1 character.</p>
+                <p ng-message="maxlength">Address number is longer than 50 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address number</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="number" ng-model="address.number"
+                       ng-minlength = "1" ng-maxlength = "10" required />
+            </div>
+            <div class="error" ng-messages="companyEditForm.number.$error" ng-if="companyEditForm.number.$touched">
+                <p ng-message="required">Address: number is required.</p>
+                <p ng-message="minlength">Address number should have minimum 1 character.</p>
+                <p ng-message="maxlength">Address number is longer than 10 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <input type="submit" value="Save" class="btn btn-primary" ng-disabled="companyEditForm.$invalid"/>
+                <button type="button" class="btn btn-primary" ng-click="reset()">
+                    <span class="glyphicon glyphicons-cleaning"></span> Reset
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

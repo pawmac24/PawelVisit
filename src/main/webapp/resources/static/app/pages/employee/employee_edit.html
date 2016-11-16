@@ -1,0 +1,61 @@
+<h1>Employee Edit</h1>
+
+<div class="col-md-8">
+    <form class="form-horizontal" name="employeeEditForm" role="form" ng-submit="save()" novalidate >
+        <div class="form-group">
+            <label class="col-md-4 control-label">Company name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="companyName" ng-model="companyName" ng-disabled="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Department name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="departmentName" ng-model="departmentName" ng-disabled="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">First name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="firstName" ng-model="employee.firstName"
+                       ng-minlength = "1" ng-maxlength = "20" required />
+            </div>
+            <div class="error" ng-messages="employeeEditForm.firstName.$error" ng-if="employeeEditForm.firstName.$touched" >
+                <p ng-message="required">First name is required.</p>
+                <p ng-message="minlength">First name should have minimum 1 character.</p>
+                <p ng-message="maxlength">First name is longer than 20 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Last Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="lastName" ng-model="employee.lastName"
+                       ng-minlength = "1" ng-maxlength = "40" required />
+            </div>
+            <div class="error" ng-messages="employeeEditForm.lastName.$error" ng-if="employeeEditForm.lastName.$touched" >
+                <p ng-message="required">Last name is required.</p>
+                <p ng-message="minlength">Last name should have minimum 1 character.</p>
+                <p ng-message="maxlength">Last name is longer than 40 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Description</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="description" ng-model="employee.description"
+                       ng-maxlength = "80"/>
+            </div>
+            <div class="error" ng-messages="employeeEditForm.description.$error" ng-if="employeeEditForm.description.$touched" >
+                <p ng-message="maxlength">Description is longer than 80 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <input type="submit" value="Save" class="btn btn-primary" ng-disabled="employeeEditForm.$invalid"/>
+                <button type="button" class="btn btn-primary" ng-click="reset()">
+                    <span class="glyphicon glyphicons-cleaning"></span> Reset
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

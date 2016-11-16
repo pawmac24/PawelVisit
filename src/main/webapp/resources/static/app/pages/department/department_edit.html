@@ -1,0 +1,81 @@
+<h1>Department Edit</h1>
+
+<div class="col-md-8">
+    <form class="form-horizontal" name="departmentEditForm" role="form" ng-submit="save()" novalidate >
+        <div class="form-group">
+            <label class="col-md-4 control-label">Company name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="companyName" ng-model="companyName" ng-disabled="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="name" ng-model="name"
+                       ng-minlength = "1" ng-maxlength = "50" required />
+            </div>
+            <div class="error" ng-messages="departmentEditForm.name.$error" ng-if="departmentEditForm.name.$touched">
+                <p ng-message="required">Department name is required.</p>
+                <p ng-message="minlength">Department name should have minimum 1 character.</p>
+                <p ng-message="maxlength">Department name is longer than 50 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address city</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="city" ng-model="address.city"
+                       ng-minlength = "1" ng-maxlength = "40" required />
+            </div>
+            <div class="error" ng-messages="departmentEditForm.city.$error" ng-if="departmentEditForm.city.$touched">
+                <p ng-message="required">Address: city is required.</p>
+                <p ng-message="minlength">City name should have minimum 1 character.</p>
+                <p ng-message="maxlength">City name is longer than 40 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address postcode</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="postcode" ng-model="address.postcode"
+                       ng-minlength = "1" ng-maxlength = "10" required />
+            </div>
+            <div class="error" ng-messages="departmentEditForm.postcode.$error" ng-if="departmentEditForm.postcode.$touched">
+                <p ng-message="required">Address: postcode is required.</p>
+                <p ng-message="minlength">Postcode should have minimum 1 character.</p>
+                <p ng-message="maxlength">Postcode is longer than 10 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address street</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="street" ng-model="address.street"
+                       ng-minlength = "1" ng-maxlength = "50" required />
+            </div>
+            <div class="error" ng-messages="departmentEditForm.street.$error" ng-if="departmentEditForm.street.$touched">
+                <p ng-message="required">Address: street is required.</p>
+                <p ng-message="minlength">Street name should have minimum 1 character.</p>
+                <p ng-message="maxlength">Address number is longer than 50 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address number</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="number" ng-model="address.number"
+                       ng-minlength = "1" ng-maxlength = "10" required />
+            </div>
+            <div class="error" ng-messages="departmentEditForm.number.$error" ng-if="departmentEditForm.number.$touched">
+                <p ng-message="required">Address: number is required.</p>
+                <p ng-message="minlength">Address number should have minimum 1 character.</p>
+                <p ng-message="maxlength">Address number is longer than 10 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <input type="submit" value="Save" class="btn btn-primary" ng-disabled="departmentEditForm.$invalid"/>
+                <button type="button" class="btn btn-primary" ng-click="reset()">
+                    <span class="glyphicon glyphicons-cleaning"></span> Reset
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

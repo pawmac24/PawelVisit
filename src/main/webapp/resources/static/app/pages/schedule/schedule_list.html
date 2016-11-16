@@ -1,0 +1,92 @@
+<button type="button" class="btn btn-danger" ng-click="goBack()">
+    <span class="glyphicon glyphicon-arrow-left"></span> Back
+</button>
+<!--<button type="button" class="btn btn-danger" ui-sref="schedule.create">-->
+    <!--<span class="glyphicon glyphicons-unshare"></span> Create-->
+<!--</button>-->
+
+<h1>Schedule List</h1>
+
+<div class="col-md-12 form-group form-horizontal">
+    <label class="col-md-2 control-label">Week</label>
+    <div class="col-md-4">
+        <select class="form-control"
+                ng-model="selectedWeek"
+                ng-options="week as ((week.from | date: 'yyyy-MM-dd') + ' - ' + (week.to | date: 'yyyy-MM-dd')) for week in weeks"
+                ng-change="selectWeek()">
+            <option value="">Select week</option>
+        </select>
+    </div>
+    <!--<p>From: {{selectedWeek.from}} <br/> To: {{selectedWeek.to}} <br/> All: {{selectedWeek}}</p>-->
+</div>
+
+<!--<div>-->
+    <!--<div id="grid1" ui-grid="{ data: myData }" class="col-md-12 grid"></div>-->
+<!--</div>-->
+
+
+<form class="form-horizontal" name="scheduleCreateUpdateForm" role="form" ng-submit="save()" novalidate >
+
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Hour from</th>
+            <th>Hour to</th>
+            <th>Room</th>
+            <th>Error</th>
+        </tr>
+        <tr ng-repeat="schedule in schedules" ng-form="scheduleFieldForm">
+            <td class="centerColumn">{{ $index + 1 }}</td>
+            <td class="centerColumn">
+                {{schedule.start | date: 'yyyy-MM-dd' }}
+                <button type="button" class="btn btn-danger" ng-click="addRow($index)" ng-disabled="schedule.start < currentDay">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </td>
+            <td>
+                <uib-timepicker ng-model="schedule.start"
+                                ng-change="changedSchedule($index)"
+                                ng-disabled="schedule.start < currentDay"
+                                show-meridian="false">
+                </uib-timepicker>
+            </td>
+            <td>
+                <uib-timepicker ng-model="schedule.stop"
+                                ng-change="changedSchedule($index)"
+                                ng-disabled="schedule.start < currentDay"
+                                show-meridian="false">
+                </uib-timepicker>
+            </td>
+            <td>
+                <select class="form-control"
+                        name="roomNumber"
+                        ng-model="selectedRoom[$index]"
+                        ng-options="room as room.number for room in schedules[$index].rooms"
+                        ng-change="selectRoom($index, selectedRoom[$index].roomId)"
+                        ng-disabled="schedule.start < currentDay"
+                        required>
+                    <option value="">Select room</option>
+                </select>
+                <!--<p>All: {{selectedRoom}} <br/> Number: {{selectedRoom.number}} <br/> Id: {{selectedRoom.roomId}}</p>-->
+            </td>
+            <td>
+                <!--<pre>scheduleFieldForm.roomNumber.$error = {{ scheduleFieldForm.roomNumber.$error | json }}</pre>-->
+
+                <div class="error" ng-messages="scheduleFieldForm.roomNumber.$error"
+                     ng-if="scheduleFieldForm.roomNumber.$touched">
+                    <p ng-message="required">Room number is required.</p>
+                </div>
+            </td>
+        </tr>
+        <tr ng-show="notFound">
+            <td colspan="6" style="text-align: center; font-weight: bold">Schedules are not found</td>
+        </tr>
+        <tr ng-hide="notFound">
+            <td colspan="6" style="text-align: center; font-weight: bold">
+                <input type="submit" value="Save" class="btn btn-danger" ng-disabled="scheduleCreateUpdateForm.$invalid" />
+            </td>
+        </tr>
+    </table>
+
+</form>

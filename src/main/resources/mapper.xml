@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+    </configuration>
+
+    <mapping type="one-way">
+        <class-a>com.pm.company.model.Employee</class-a>
+        <class-b>com.pm.company.dto.result.EmployeeResultDTO</class-b>
+        <field>
+            <a>department.company.name</a>
+            <b>companyName</b>
+        </field>
+        <field>
+            <a>department.name</a>
+            <b>departmentName</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.pm.company.model.Room</class-a>
+        <class-b>com.pm.company.dto.result.RoomResultDTO</class-b>
+        <field>
+            <a>department.company.name</a>
+            <b>companyName</b>
+        </field>
+        <field>
+            <a>department.name</a>
+            <b>departmentName</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.pm.company.model.Schedule</class-a>
+        <class-b>com.pm.company.dto.result.ScheduleResultDTO</class-b>
+        <field>
+            <a>room.roomId</a>
+            <b>roomId</b>
+        </field>
+        <field>
+            <a>employee.employeeId</a>
+            <b>employeeId</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.pm.company.dto.ScheduleCreateUpdateDTO</class-a>
+        <class-b>com.pm.company.model.Schedule</class-b>
+        <field>
+            <a>roomId</a>
+            <b>room.roomId</b>
+        </field>
+        <field>
+            <a>employeeId</a>
+            <b>employee.employeeId</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way" map-id="caseListEmployees">
+        <class-a>com.pm.company.model.Employee</class-a>
+        <class-b>com.pm.company.dto.result.EmployeeResultDTO</class-b>
+        <field-exclude>
+            <a>department.company.name</a>
+            <b>companyName</b>
+        </field-exclude>
+        <field-exclude>
+            <a>department.name</a>
+            <b>departmentName</b>
+        </field-exclude>
+    </mapping>
+
+</mappings>

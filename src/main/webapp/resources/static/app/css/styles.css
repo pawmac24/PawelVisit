@@ -1,0 +1,19 @@
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.grid {
+    width: 500px;
+    height: 250px;
+}
+
+.centerColumn {
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+}

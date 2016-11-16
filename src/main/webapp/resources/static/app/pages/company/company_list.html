@@ -1,0 +1,29 @@
+<h1>Company List</h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Postcode</th>
+        <th>Street</th>
+        <th>Number</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="company in companies | filter:currentUser.companyId" ng-click="selectRow($index)" ng-class="$index == selectedRow ? 'info' : ''">
+        <td>{{ $index + 1 }}</td>
+        <td>{{company.name}}</td>
+        <td>{{company.address.city}}</td>
+        <td>{{company.address.postcode}}</td>
+        <td>{{company.address.street}}</td>
+        <td>{{company.address.number}}</td>
+        <td>
+            <button type="button" class="btn btn-danger" ui-sref="company.edit({companyId: company.companyId})" ng-disabled="$index != selectedRow">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="delete(company.companyId)" ng-disabled="$index != selectedRow">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+</table>

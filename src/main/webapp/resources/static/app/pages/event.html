@@ -1,0 +1,16 @@
+<div ng-show="authenticated" class="container" ng-controller="eventController">
+    Root scope <span style="text-decoration: underline">MyEvent</span> count: {{count}}
+    <ul>
+        <li ng-repeat="i in [1]" ng-controller="eventController">
+            <button ng-click="$emit('MyEvent')">$emit('MyEvent')</button>
+            <button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button>
+            <br>
+            Middle scope <span style="text-decoration: underline">MyEvent</span> count: {{count}}
+            <ul>
+                <li ng-repeat="item in [1, 2]" ng-controller="eventController">
+                    Leaf scope <span style="text-decoration: underline">MyEvent</span> count: {{count}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

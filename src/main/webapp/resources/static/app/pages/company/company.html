@@ -1,0 +1,6 @@
+<a ui-sref="company.list" class="btn btn-primary">List</a>
+<!--<a ui-sref="company.create" class="btn btn-danger" ng-disabled="true">Create</a>-->
+<button type="button" class="btn btn-danger" ui-sref="company.create" ng-disabled="currentUser.companyId != null">Create</button>
+
+
+<div ui-view></div>

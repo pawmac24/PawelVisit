@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<!-- define angular app -->
+<html lang="en" ng-app="mainApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Training</title>
+    <link rel="stylesheet" href="static/app/css/styles.css">
+    <link rel="stylesheet" href="static/app/css/toastr.min.css" />
+    <link rel="stylesheet" href="static/app/ui-grid/ui-grid.min.css" />
+    <link rel="stylesheet" href="static/app/timepicker/ui-bootstrap-custom-1.1.1-csp.css" />
+
+    <!-- SCROLLS -->
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css"/>
+
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<!-- define angular controller -->
+<body ng-controller="mainController" class="ng-cloak">
+    <!-- HEADER AND NAVBAR -->
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="home">Angular Routing Example</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <!--For ngRoute like this: <li><a href="#/...">...</a></li>-->
+                    <li><a ng-show="authenticated"><span style="font-weight: bold">Hello {{ currentUser.firstName + " " + currentUser.lastName}}</span></a></li>
+                    <li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a ui-sref="about"><i class="fa fa-shield"></i> About</a></li>
+                    <li><a ui-sref="contact"><i class="fa fa-comment"></i> Contact</a></li>
+                    <!--<li ng-show="authenticated"><a ui-sref="company.list">Company</a></li>-->
+                    <!--<li ng-show="authenticated"><a ui-sref="department.list">Department</a></li>-->
+                    <!--<li ng-show="authenticated"><a ui-sref="employee.list">Employee</a></li>-->
+
+                    <li ng-show="authenticated" class="dropdown">
+                        <a a href="" class="dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Operations <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-show="authenticated"><a ui-sref="company.list">Company</a></li>
+                            <li ng-show="authenticated"><a ui-sref="department.list">Department</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li ng-show="authenticated"><a ui-sref="employee.list">Employee</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li ng-show="authenticated"><a ui-sref="room.list">Room</a></li>
+                        </ul>
+                    </li>
+
+                    <li ng-hide="authenticated"><a ui-sref="login">login</a></li>
+                    <li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+                    <!-- ONLY FOR TEST NEW FEATURES -->
+                    <li ng-show="false"><a ui-sref="test">TEST</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- COMMON TEXT WHEN AUTHENTICATED -->
+    <div ng-show="authenticated" style="text-align: center">Common text when authenticated</div>
+
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main" class="container">
+        <div style="text-align: center;">{{ message }}</div>
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <!-- For ngRoute -->
+        <!-- <div ng-view></div> -->
+        <div ui-view></div>
+
+    </div>
+
+
+    <!-- SPELLS -->
+    <!-- load angular and angular route via CDN -->
+    <script src="static/app/js/angular.min.js"></script>
+    <!-- For ngRoute -->
+    <!--<script src="static/app/js/angular-route.min.js"></script>-->
+    <script src="static/app/js/angular-ui-router.min.js"></script>
+    <script src="static/app/js/angular-messages.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="static/app/js/toastr.min.js"></script>
+    <script src="static/app/ui-grid/ui-grid.min.js"></script>
+    <script src="static/app/timepicker/ui-bootstrap-custom-1.1.1.min.js"></script>
+    <script src="static/app/timepicker/ui-bootstrap-custom-tpls-1.1.1.min.js"></script>
+    <!-- Application libraries-->
+    <script src="static/app/js/app.js"></script>
+    <script src="static/app/js/app-company.js"></script>
+    <script src="static/app/js/app-department.js"></script>
+    <script src="static/app/js/app-employee.js"></script>
+    <script src="static/app/js/app-room.js"></script>
+    <script src="static/app/js/app-schedule.js"></script>
+    <script src="static/app/js/app-services.js"></script>
+    <script src="static/app/js/app-utils.js"></script>
+    <!-- ONLY FOR TEST NEW FEATURES -->
+    <script src="static/app/js/app-test.js"></script>
+</body>
+</html>

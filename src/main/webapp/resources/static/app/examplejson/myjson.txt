@@ -1,0 +1,12 @@
+//company
+
+{
+  "name" : "XYZ",
+  "address" :
+  {
+    "city": "XYZ",
+    "postcode": "ABC",
+    "street": "ULU",
+    "number": "123B"
+  }
+}
