@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
  * JPA 2.0
  */
 @Embeddable
-public class XXXPhone {
+public class ExampleTestPhone {
 
     @Column(name="type", length = 5, nullable = false)
     private String type;
@@ -19,10 +19,10 @@ public class XXXPhone {
     @Column(name="phone_number", length = 8, nullable = false)
     private String number;
 
-    protected XXXPhone() {
+    protected ExampleTestPhone() {
     }
 
-    public XXXPhone(String type, String areaCode, String number) {
+    public ExampleTestPhone(String type, String areaCode, String number) {
         this.type = type;
         this.areaCode = areaCode;
         this.number = number;
@@ -54,7 +54,7 @@ public class XXXPhone {
 
     @Override
     public String toString() {
-        return "XXXPhone{" +
+        return "ExampleTestPhone{" +
                 "type='" + type + '\'' +
                 ", areaCode='" + areaCode + '\'' +
                 ", number='" + number + '\'' +

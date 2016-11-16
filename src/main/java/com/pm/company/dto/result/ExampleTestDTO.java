@@ -3,7 +3,7 @@ package com.pm.company.dto.result;
 /**
  * Created by pmackiewicz on 2016-02-03.
  */
-public class XXXDTO {
+public class ExampleTestDTO {
     private Long id;
 
     public Long getId() {

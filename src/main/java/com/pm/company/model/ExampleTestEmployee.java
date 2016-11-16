@@ -10,8 +10,8 @@ import java.util.List;
  * JPA 2.0
  */
 @Entity
-@Table(name = "xxx_employee")
-public class XXXEmployee {
+@Table(name = "exampletest_employee")
+public class ExampleTestEmployee {
 
     @Id
     @GeneratedValue
@@ -29,15 +29,15 @@ public class XXXEmployee {
 
     @ElementCollection
     @CollectionTable(
-            name="xxx_phone",
+            name="exampletest_phone",
             joinColumns=@JoinColumn(name="owner_id")
     )
-    private List<XXXPhone> phones;
+    private List<ExampleTestPhone> phones;
 
-    protected XXXEmployee() {
+    protected ExampleTestEmployee() {
     }
 
-    public XXXEmployee(String firstName, String lastName, BigDecimal salary) {
+    public ExampleTestEmployee(String firstName, String lastName, BigDecimal salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
@@ -75,15 +75,15 @@ public class XXXEmployee {
         this.salary = salary;
     }
 
-    public List<XXXPhone> getPhones() {
+    public List<ExampleTestPhone> getPhones() {
         return phones;
     }
 
-    public void setPhones(List<XXXPhone> phones) {
+    public void setPhones(List<ExampleTestPhone> phones) {
         this.phones = phones;
     }
 
-    public void addPhone(XXXPhone phone){
+    public void addPhone(ExampleTestPhone phone){
         if(phones == null || phones.isEmpty()){
             phones = new ArrayList<>();
         }
@@ -92,7 +92,7 @@ public class XXXEmployee {
 
     @Override
     public String toString() {
-        return "XXXEmployee{" +
+        return "ExampleTestEmployee{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
